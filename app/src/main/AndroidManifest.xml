@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.huangliner.prioritytodo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="com.huangliner.prioritytodo.application.di.MyApplication"
         android:allowBackup="true"
