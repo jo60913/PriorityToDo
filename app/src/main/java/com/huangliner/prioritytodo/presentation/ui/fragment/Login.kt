@@ -27,6 +27,7 @@ class Login : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(layoutInflater)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.loginViewModel = loginViewModel
         binding.btnLoginLogin.setOnClickListener {
             loginViewModel.login()
         }
