@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.huangliner.prioritytodo.presentation.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.fragment.Login">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_login_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <TextView
+            android:id="@+id/tv_login_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_login_title"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_login_top" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_login_accountlayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/login_input_account_hint"
+            app:endIconMode="clear_text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_login_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={loginViewModel.loginAccount}"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_login_password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/login_input_password_hint"
+            app:endIconMode="clear_text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintTop_toBottomOf="@+id/til_login_accountlayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={loginViewModel.loginPassword}"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_login_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:text="@string/login_login_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_login_password_layout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
