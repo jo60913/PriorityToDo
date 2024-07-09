@@ -4,8 +4,8 @@ package com.huangliner.prioritytodo.data.model.request
 import com.google.gson.annotations.SerializedName
 
 data class LoginRequest(
-    @SerializedName("account")
+    @SerializedName("UserAccount")
     val account: String,
-    @SerializedName("password")
+    @SerializedName("UserPassword")
     val password: String
 )

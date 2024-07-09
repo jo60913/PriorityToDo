@@ -4,8 +4,8 @@ package com.huangliner.prioritytodo.data.model.response
 import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(
-    @SerializedName("errorFlag")
+    @SerializedName("ErrorFlag")
     val errorFlag: String,
-    @SerializedName("errorMsg")
+    @SerializedName("ErrorMsg")
     val errorMsg: String
 )
