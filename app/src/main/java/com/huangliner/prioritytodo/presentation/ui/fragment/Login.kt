@@ -32,10 +32,15 @@ class Login : Fragment() {
             loginViewModel.login()
         }
 
+        binding.btnLoginNoAccount.setOnClickListener {
+            val action = LoginDirections.actionLoginToAddAccountFragment()
+            findNavController().navigate(action)
+        }
+
         loginViewModel.loginState.observe(viewLifecycleOwner){
             when(it){
                 is NetworkResult.Error -> {
-                    Timber.e("登入 失敗")
+                    Timber.e("登入 失敗${it.message} ${it.data}")
                     Snackbar.make(binding.root,"登入錯誤${it.message}",Snackbar.LENGTH_LONG).show()
                 }
                 is NetworkResult.Loading -> {

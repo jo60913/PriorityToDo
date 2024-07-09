@@ -8,6 +8,7 @@ import com.huangliner.prioritytodo.domain.repository.IRepositry
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @ActivityRetainedScoped
@@ -21,7 +22,7 @@ class LoginUsecase @Inject constructor(
             account = account,
             password = password
         )
-        return@withContext Either.Right(true)
+
         try {
             val loginResult = IRepositry.login(loginRequest)
             val response = loginResult.body()
@@ -31,6 +32,7 @@ class LoginUsecase @Inject constructor(
             if(response.errorFlag == BACKEND_ERROR_SUCCESSFUL_ERROR_FLAG){
                 return@withContext Either.Right(true)
             }
+            Timber.e("登入 回傳${response.errorMsg}")
             return@withContext Either.Left(Failure.FailMessage(response.errorMsg))
         }catch (e:Exception){
             return@withContext Either.Left(Failure.Exception(e.message.toString()))
