@@ -1,7 +1,9 @@
 package com.huangliner.prioritytodo.application.di
 
+import com.huangliner.prioritytodo.application.util.Constants.Companion.BACKEND_URL
 import com.huangliner.prioritytodo.application.util.Constants.Companion.HTTP_CONNECT_TIMEOUT
 import com.huangliner.prioritytodo.application.util.Constants.Companion.HTTP_READ_TIMEOUT
+import com.huangliner.prioritytodo.application.util.OkhttpInterceptor
 import com.huangliner.prioritytodo.data.network.Backend
 import dagger.Module
 import dagger.Provides
@@ -29,7 +31,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://www.google.com/")
+            .baseUrl(BACKEND_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
@@ -43,10 +45,19 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providerHttpClient(): OkHttpClient {
+    fun providerHttpClient(
+        interceptor: OkhttpInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .readTimeout(HTTP_READ_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(HTTP_CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun providerInterceptor(): OkhttpInterceptor {
+        return OkhttpInterceptor()
     }
 }

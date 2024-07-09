@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="addAccountViewModel"
+            type="com.huangliner.prioritytodo.presentation.viewmodel.AddAccountViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.fragment.AddAccountFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_add_account_top"
+            app:layout_constraintGuide_percent="0.2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/tv_add_account_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_add_account_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新增帳號"
+            android:textSize="40sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_add_account_accountlayout"
+            app:endIconMode="clear_text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_account_title"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/login_input_account_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_account_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={addAccountViewModel.account}"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_add_account_password_layout"
+            app:endIconMode="clear_text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintTop_toBottomOf="@+id/til_add_account_accountlayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/login_input_password_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_account_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:text="@={addAccountViewModel.password}"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_add_account_password_again_layout"
+            app:endIconMode="clear_text"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintTop_toBottomOf="@+id/til_add_account_password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:hint="@string/add_account_password_again">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_add_account_again_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:text="@={addAccountViewModel.confirmPassword}"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_add_account_confirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_add_account_password_again_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:text="@string/add_account_confirm" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
