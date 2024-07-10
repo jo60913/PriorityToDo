@@ -20,18 +20,22 @@ class AddAccountViewModel @Inject constructor(
     val account = ObservableField("")
     val password = ObservableField("")
     val confirmPassword = ObservableField("")
+    val userName = ObservableField("")
     private val _addAccountState = MutableLiveData<NetworkResult<String>>()
 
     val addAccountState : LiveData<NetworkResult<String>> = _addAccountState
 
     fun addAccount(){
+        if(hasEmptyField())
+            return _addAccountState.postValue(NetworkResult.Error("請填寫所有欄位"))
         Timber.e("執行addaccount")
         viewModelScope.launch {
             _addAccountState.postValue(NetworkResult.Loading())
             val result = addAccountUsecase.execute(
                 account = account.get()!!,
                 password = password.get()!!,
-                confirmPassword = confirmPassword.get()!!
+                confirmPassword = confirmPassword.get()!!,
+                userName = userName.get()!!
             )
 
             when(result){
@@ -46,4 +50,6 @@ class AddAccountViewModel @Inject constructor(
             }
         }
     }
+
+    private fun hasEmptyField() = account.get()!!.isEmpty() || password.get()!!.isEmpty() || confirmPassword.get()!!.isEmpty() || userName.get()!!.isEmpty()
 }

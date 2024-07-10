@@ -7,5 +7,7 @@ data class AddAccountRequest(
     @SerializedName("UserAccount")
     val userAccount: String,
     @SerializedName("UserPassword")
-    val userPassword: String
+    val userPassword: String,
+    @SerializedName("UserName")
+    val userName : String
 )

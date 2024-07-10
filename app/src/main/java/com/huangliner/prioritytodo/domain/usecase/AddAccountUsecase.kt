@@ -18,7 +18,8 @@ class AddAccountUsecase @Inject constructor(
     suspend fun execute(
         account: String,
         password: String,
-        confirmPassword:String
+        confirmPassword:String,
+        userName:String
     ): Either<Failure, Boolean> = withContext(Dispatchers.IO) {
         if(password != confirmPassword)
             return@withContext Either.Left(Failure.FailMessage("密碼與確認密碼不相等"))
@@ -26,7 +27,8 @@ class AddAccountUsecase @Inject constructor(
 
         val addAccountRequest = AddAccountRequest(
             userAccount = account,
-            userPassword = password
+            userPassword = password,
+            userName = userName
         )
 
         try{
