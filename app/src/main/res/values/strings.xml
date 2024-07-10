@@ -25,4 +25,5 @@
     <string name="add_task_add_sign">+</string>
     <string name="common_search">搜尋</string>
     <string name="common_ok">ok</string>
+    <string name="common_delete">刪除</string>
 </resources>

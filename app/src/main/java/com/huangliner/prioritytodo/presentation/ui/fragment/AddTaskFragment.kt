@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.huangliner.prioritytodo.R
 import com.huangliner.prioritytodo.databinding.FragmentAddAccountBinding
 import com.huangliner.prioritytodo.databinding.FragmentAddTaskBinding
+import timber.log.Timber
 
 
 class AddTaskFragment : Fragment() {
@@ -22,6 +23,19 @@ class AddTaskFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.add_fragment_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_ok->{
+
+            }
+            R.id.menu_delete->{
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
     override fun onDestroy() {
