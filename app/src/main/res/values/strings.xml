@@ -24,4 +24,5 @@
     <string name="add_task_subtask_content">子任務名稱</string>
     <string name="add_task_add_sign">+</string>
     <string name="common_search">搜尋</string>
+    <string name="common_ok">ok</string>
 </resources>
