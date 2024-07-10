@@ -13,4 +13,14 @@
     <string name="login_no_account">沒有帳號</string>
     <string name="add_account_input_user_name">輸入姓名</string>
     <string name="add_account_title">新增帳號</string>
+    <string name="add_task_task_title">標題</string>
+    <string name="add_task_title_input_hint">輸入標題</string>
+    <string name="add_task_content_title">內容</string>
+    <string name="add_task_content_input_hint">輸入內容</string>
+    <string name="add_task_end_date">結束時間</string>
+    <string name="tv_add_task_priority_title">優先級</string>
+    <string name="add_task_category">分類</string>
+    <string name="add_task_subtask_title">子任務</string>
+    <string name="add_task_subtask_content">子任務名稱</string>
+    <string name="add_task_add_sign">+</string>
 </resources>

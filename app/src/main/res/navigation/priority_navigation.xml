@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.huangliner.prioritytodo.presentation.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+    </fragment>
     <fragment
         android:id="@+id/login"
         android:name="com.huangliner.prioritytodo.presentation.ui.fragment.Login"
