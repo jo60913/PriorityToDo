@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">PriorityToDo</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_login_title">登入</string>
     <string name="login_input_account_hint">輸入帳號</string>
@@ -26,4 +25,19 @@
     <string name="common_search">搜尋</string>
     <string name="common_ok">ok</string>
     <string name="common_delete">刪除</string>
+    <string name="common_formatted_date">%1$d-%2$02d-%3$s</string>
+    <string name="add_task_input_title_hint">請輸入標題</string>
+    <string name="add_task_content_titile_hint">請輸入內容</string>
+    <string name="add_task_subtask_input_hint">請輸入子標題</string>
+    <string name="add_task_add_success">新增任務成功</string>
+    <string-array name="todo_item_priority">
+        <item>高</item>
+        <item>中</item>
+        <item>低</item>
+    </string-array>
+
+    <string-array name="todo_item_category">
+        <item>工作</item>
+        <item>個人</item>
+    </string-array>
 </resources>
