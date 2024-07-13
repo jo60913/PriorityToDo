@@ -36,7 +36,7 @@ class LoginViewModel @Inject constructor(
                 }
                 is Either.Right -> {
                     Timber.e("登入成功")
-                    _loginState.postValue(NetworkResult.Success())
+                    _loginState.postValue(NetworkResult.Success(""))
                 }
             }
 
