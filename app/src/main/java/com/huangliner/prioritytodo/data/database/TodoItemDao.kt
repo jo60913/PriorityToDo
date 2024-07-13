@@ -22,6 +22,8 @@ interface TodoItemDao {
     @Query("SELECT * FROM TodoItem WHERE `No` = :no")
     suspend fun selectTodoItemByNo(no: String) : TodoItem
 
-    @Query("SELECT * FROM TodoItem WHERE date(DueDate) = date('now', 'localtime') AND ParentNo = 0;")
+    @Query("SELECT *\n" +
+            "FROM TodoItem\n" +
+            "WHERE DueDate BETWEEN datetime('now', 'localtime') AND datetime('now', 'localtime', '+1 day')")
     fun getDueDateTodo(): Flow<List<TodoItem>>
 }

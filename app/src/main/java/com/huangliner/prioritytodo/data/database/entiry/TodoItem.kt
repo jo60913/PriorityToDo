@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.huangliner.prioritytodo.application.util.Category
 import com.huangliner.prioritytodo.application.util.Priority
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Entity(tableName = "TodoItem")
 data class TodoItem(
@@ -32,10 +33,10 @@ data class TodoItem(
     var category: Category,
 
     @ColumnInfo(name = "DueDate")
-    var dueDate: LocalDate,
+    var dueDate: LocalDateTime,
 
     @ColumnInfo(name = "CreateDate")
-    var createDate: LocalDate
+    var createDate: LocalDateTime
 ) {
     constructor(
         parentNo: String,
@@ -44,8 +45,8 @@ data class TodoItem(
         content: String,
         priority: Priority,
         category: Category,
-        dueDate: LocalDate,
-        createDate: LocalDate
+        dueDate: LocalDateTime,
+        createDate: LocalDateTime
     ) : this(
         no = 0,
         parentNo,
@@ -66,7 +67,7 @@ data class TodoItem(
         "",
         Priority.Low,
         Category.Work,
-        LocalDate.now(),
-        LocalDate.now()
+        LocalDateTime.now(),
+        LocalDateTime.now()
     )
 }
