@@ -33,6 +33,9 @@
     <string name="home_24hour_due_date_todo_item">沒有24小時內到期的任務</string>
     <string name="row_item_remain_time">剩餘時間</string>
     <string name="remain_time_format">%s %02d:%02d</string>
+    <string name="update_task_modife_success">修改成功</string>
+    <string name="update_task_delete_success">刪除成功</string>
+    <string name="update_task_recover_hint">復原</string>
     <string-array name="todo_item_priority">
         <item>高</item>
         <item>中</item>

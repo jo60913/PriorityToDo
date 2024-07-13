@@ -9,10 +9,13 @@
         android:id="@+id/homeFragment"
         android:name="com.huangliner.prioritytodo.presentation.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_addTaskFragment"
             app:destination="@id/addTaskFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -35,7 +38,11 @@
         android:id="@+id/taskListFragment"
         android:name="com.huangliner.prioritytodo.presentation.ui.fragment.TaskListFragment"
         android:label="fragment_task_list"
-        tools:layout="@layout/fragment_task_list" />
+        tools:layout="@layout/fragment_task_list">
+        <action
+            android:id="@+id/action_taskListFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addTaskFragment"
         android:name="com.huangliner.prioritytodo.presentation.ui.fragment.AddTaskFragment"
@@ -46,4 +53,13 @@
         android:name="com.huangliner.prioritytodo.presentation.ui.fragment.AddAccountFragment"
         android:label="fragment_add_account"
         tools:layout="@layout/fragment_add_account" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.huangliner.prioritytodo.presentation.ui.fragment.UpdateFragment"
+        android:label="UpdateFragment"
+        tools:layout="@layout/fragment_update">
+        <argument
+            android:name="taskNo"
+            app:argType="long"/>
+    </fragment>
 </navigation>

@@ -28,4 +28,13 @@ interface TodoItemDao {
 
     @Query("SELECT * FROM TodoItem WHERE Title LIKE '%' || :keyWord || '%' OR Content LIKE '%' || :keyWord || '%'")
     suspend fun searchTodoItemByKeyWord(keyWord: String): List<TodoItem>
+
+    @Query("SELECT * FROM TodoItem WHERE `No` =:taskNo")
+    suspend fun getTaskByNo(taskNo: String): TodoItem
+
+    @Query("SELECT * FROM TodoItem WHERE ParentNo =:taskNo")
+    suspend fun getSubTaskByParentNo(taskNo: String): List<TodoItem>
+
+    @Delete
+    fun deleteTasks(tasks: List<TodoItem>)
 }

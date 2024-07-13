@@ -26,4 +26,7 @@ interface IRepositry {
 
     suspend fun getDueDateTodo(): List<TodoItem>
     suspend fun searchTodoItem(keyWord: String) : List<TodoItem>
+    suspend fun getTaskByTaskNo(taskNo: String) : TodoItem
+    suspend fun getSubTaskByParentNo(taskNo: String) : List<TodoItem>
+    suspend fun deleteTasks(tasks: List<TodoItem>)
 }

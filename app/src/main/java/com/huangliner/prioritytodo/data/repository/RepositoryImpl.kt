@@ -18,5 +18,8 @@ class RepositoryImpl @Inject constructor(
     override suspend fun upsertSubTask(todoItemList: List<TodoItem>) = todoItemDao.upsertSubTodoItem(todoItem = todoItemList)
     override suspend fun getDueDateTodo() = todoItemDao.getDueDateTodo()
     override suspend fun searchTodoItem(keyWord: String): List<TodoItem> = todoItemDao.searchTodoItemByKeyWord(keyWord = keyWord)
+    override suspend fun getTaskByTaskNo(taskNo: String) = todoItemDao.getTaskByNo(taskNo = taskNo)
+    override suspend fun getSubTaskByParentNo(taskNo: String) = todoItemDao.getSubTaskByParentNo(taskNo = taskNo)
+    override suspend fun deleteTasks(tasks: List<TodoItem>) = todoItemDao.deleteTasks(tasks)
 
 }
