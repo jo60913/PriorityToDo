@@ -1,6 +1,7 @@
 package com.huangliner.prioritytodo.presentation.ui.fragment
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.*
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -12,14 +13,20 @@ import com.google.android.material.textfield.TextInputLayout
 import com.huangliner.prioritytodo.R
 import com.huangliner.prioritytodo.application.util.CategoryUtils
 import com.huangliner.prioritytodo.application.util.LocalDateUtil.Companion.toyyyyMMddString
+import com.huangliner.prioritytodo.application.util.LocalTimeUtil.Companion.toHHmmss
 import com.huangliner.prioritytodo.application.util.PriorityUtils
 import com.huangliner.prioritytodo.application.util.StringUtil.Companion.convertDateStringToDateInt
 import com.huangliner.prioritytodo.application.util.StringUtil.Companion.toLocalDate
+import com.huangliner.prioritytodo.application.util.StringUtil.Companion.toLocalDateTime
+import com.huangliner.prioritytodo.application.util.StringUtil.Companion.toLocalTime
 import com.huangliner.prioritytodo.databinding.FragmentAddTaskBinding
 import com.huangliner.prioritytodo.presentation.viewmodel.AddTaskViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class AddTaskFragment : Fragment() {
@@ -32,6 +39,7 @@ class AddTaskFragment : Fragment() {
     ): View {
         _binding = FragmentAddTaskBinding.inflate(layoutInflater)
         binding.tvAddTaskEndDate.text = LocalDate.now().toyyyyMMddString()
+        binding.tvAddTaskEndTime.text = LocalTime.now().toHHmmss()
         binding.tvAddTaskEndDate.setOnClickListener {
             val today = binding.tvAddTaskEndDate.text.toString().convertDateStringToDateInt()
             val pickerDialog = DatePickerDialog(
@@ -48,6 +56,22 @@ class AddTaskFragment : Fragment() {
             )
             pickerDialog.show()
         }
+
+        binding.tvAddTaskEndTime.setOnClickListener {
+            val localTime = binding.tvAddTaskEndTime.text.toString().toLocalTime()
+
+            TimePickerDialog(
+                context,
+                { _, hourOfDay, minute ->
+                    val newTime = LocalTime.of(hourOfDay, minute)
+                    binding.tvAddTaskEndTime.text = newTime.toHHmmss()
+                },
+                localTime.hour,
+                localTime.minute,
+                true // 使用24小時制
+            ).show()
+        }
+
         binding.btnAddTaskAddSubtask.setOnClickListener {
             addSubTaskInputLayout()
         }
@@ -82,7 +106,7 @@ class AddTaskFragment : Fragment() {
                 addTaskViewModel.addTask(
                     title = binding.tilAddTaskTitleLayout.editText?.text.toString(),
                     content = binding.tilAddTaskContentTitleLayout.editText?.text.toString(),
-                    endDate = binding.tvAddTaskEndDate.text.toString().toLocalDate(),
+                    endDate = "${binding.tvAddTaskEndDate.text} ${binding.tvAddTaskEndTime.text}".toLocalDateTime(),
                     priority = PriorityUtils.toPriority(binding.spAddTaskPriority.selectedItemId.toString()),
                     subTasks = subtasks,
                     category = CategoryUtils.toCategory(binding.spAddTaskCategory.selectedItemId.toString()),

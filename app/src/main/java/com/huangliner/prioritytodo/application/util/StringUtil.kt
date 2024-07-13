@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException
 import java.time.format.DateTimeFormatter
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.format.DateTimeParseException
 
 class StringUtil {
@@ -25,6 +26,10 @@ class StringUtil {
             val month = localDate.monthValue - 1
             val day = localDate.dayOfMonth
             return DateInt(year,month,day)
+        }
+
+        fun String.toLocalTime() : LocalTime {
+            return LocalTime.parse(this, DateTimeFormatter.ofPattern("HH:mm:ss"))
         }
     }
 }

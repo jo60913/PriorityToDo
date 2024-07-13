@@ -6,6 +6,7 @@ import com.huangliner.prioritytodo.data.database.entiry.TodoItem
 import com.huangliner.prioritytodo.domain.repository.IRepositry
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import java.time.LocalDate
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 /**
@@ -18,7 +19,7 @@ class AddTaskUsecase @Inject constructor(
     suspend fun execute(
         title: String,
         content: String,
-        endDate: LocalDate,
+        endDate: LocalDateTime,
         priority: Priority,
         subTasks: List<String>,
         category: Category
@@ -31,7 +32,7 @@ class AddTaskUsecase @Inject constructor(
             priority = priority,
             category = category,
             dueDate = endDate,
-            createDate = LocalDate.now()
+            createDate = LocalDateTime.now()
         )
         val mainTaskNo = repository.upsertMainTodoItem(todoItem)
 
@@ -46,7 +47,7 @@ class AddTaskUsecase @Inject constructor(
                 priority = priority,
                 category = category,
                 dueDate = endDate,
-                createDate = LocalDate.now()
+                createDate = LocalDateTime.now()
             )
         }
         repository.upsertSubTask(todoItemList = subTask)

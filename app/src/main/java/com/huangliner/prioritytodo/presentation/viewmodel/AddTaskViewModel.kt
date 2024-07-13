@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,7 +19,7 @@ class AddTaskViewModel @Inject constructor(
     fun addTask(
         title:String,
         content:String,
-        endDate : LocalDate,
+        endDate : LocalDateTime,
         priority: Priority,
         subTasks:List<String>,
         category: Category,
