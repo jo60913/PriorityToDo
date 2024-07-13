@@ -24,6 +24,6 @@ interface TodoItemDao {
 
     @Query("SELECT *\n" +
             "FROM TodoItem\n" +
-            "WHERE DueDate BETWEEN datetime('now', 'localtime') AND datetime('now', 'localtime', '+1 day')")
+            "WHERE DueDate BETWEEN datetime('now', 'localtime') AND datetime('now', 'localtime', '+1 day') AND ParentNo = 0")
     fun getDueDateTodo(): Flow<List<TodoItem>>
 }
