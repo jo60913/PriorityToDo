@@ -6,6 +6,7 @@ import com.huangliner.prioritytodo.data.model.request.AddAccountRequest
 import com.huangliner.prioritytodo.data.model.request.LoginRequest
 import com.huangliner.prioritytodo.data.network.Backend
 import com.huangliner.prioritytodo.domain.repository.IRepositry
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
@@ -16,5 +17,6 @@ class RepositoryImpl @Inject constructor(
     override suspend fun addAccount(addAccountRequest: AddAccountRequest) = backend.addAccount(addAccountRequest)
     override suspend fun upsertMainTodoItem(todoItem: TodoItem) = todoItemDao.upsertMainTodoItem(todoItem = todoItem)
     override suspend fun upsertSubTask(todoItemList: List<TodoItem>) = todoItemDao.upsertSubTodoItem(todoItem = todoItemList)
+    override fun getDueDateTodo() = todoItemDao.getDueDateTodo()
 
 }

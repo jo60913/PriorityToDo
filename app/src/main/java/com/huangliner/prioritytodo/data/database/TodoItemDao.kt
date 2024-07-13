@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.huangliner.prioritytodo.data.database.entiry.TodoItem
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TodoItemDao {
@@ -20,4 +21,7 @@ interface TodoItemDao {
 
     @Query("SELECT * FROM TodoItem WHERE `No` = :no")
     suspend fun selectTodoItemByNo(no: String) : TodoItem
+
+    @Query("SELECT * FROM TodoItem WHERE date(DueDate) = date('now', 'localtime') AND ParentNo = 0;")
+    fun getDueDateTodo(): Flow<List<TodoItem>>
 }

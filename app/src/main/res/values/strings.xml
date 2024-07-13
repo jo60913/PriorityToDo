@@ -30,6 +30,7 @@
     <string name="add_task_content_titile_hint">請輸入內容</string>
     <string name="add_task_subtask_input_hint">請輸入子標題</string>
     <string name="add_task_add_success">新增任務成功</string>
+    <string name="home_24hour_due_date_todo_item">沒有24小時內到期的任務</string>
     <string-array name="todo_item_priority">
         <item>高</item>
         <item>中</item>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="todoItem"
+            type="com.huangliner.prioritytodo.data.database.entiry.TodoItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_due_date_root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/item_background">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_due_date_item_row_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_due_date_item_row_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_due_date_item_row_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp" />
+
+        <TextView
+            android:id="@+id/tv_due_date_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ItemRowTitleTheme"
+            android:text="@={todoItem.title}"
+            app:layout_constraintTop_toTopOf="@+id/gl_due_date_item_row_top"
+            app:layout_constraintStart_toStartOf="@+id/gl_due_date_item_row_start"
+            tools:text="標題" />
+
+        <TextView
+            android:id="@+id/tv_due_date_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ItemRowTitleTheme"
+            android:layout_marginVertical="10dp"
+            android:text="@={todoItem.content}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_due_date_item_title"
+            app:layout_constraintStart_toStartOf="@+id/gl_due_date_item_row_start"
+            tools:text="副標題" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cd_due_date_item_priority"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:parsePriorityColor="@{todoItem.priority}"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="@id/gl_due_date_item_row_end"
+            app:layout_constraintTop_toTopOf="@+id/gl_due_date_item_row_top" />
+
+        <TextView
+            android:id="@+id/tv_due_date_item_due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ItemRowDueDateTimeTheme"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintEnd_toEndOf="@id/gl_due_date_item_row_end"
+            app:layout_constraintTop_toBottomOf="@+id/cd_due_date_item_priority" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
