@@ -7,9 +7,10 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ActivityRetainedScoped
-class DueDateTodoUsecase @Inject constructor(
-    private val repository : IRepositry
-){
-    suspend fun execute() = withContext(Dispatchers.IO){ repository.getDueDateTodo() }
-
+class SearchTaskUsecase @Inject constructor(
+    private val IRepositry: IRepositry
+) {
+    suspend fun execute(keyWord: String) = withContext(Dispatchers.IO){
+        IRepositry.searchTodoItem(keyWord)
+    }
 }

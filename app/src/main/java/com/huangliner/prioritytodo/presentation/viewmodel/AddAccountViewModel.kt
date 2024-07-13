@@ -45,7 +45,7 @@ class AddAccountViewModel @Inject constructor(
                 }
 
                 is Either.Right ->{
-                    _addAccountState.postValue(NetworkResult.Success())
+                    _addAccountState.postValue(NetworkResult.Success(""))
                 }
             }
         }

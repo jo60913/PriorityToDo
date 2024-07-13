@@ -5,7 +5,6 @@ import com.huangliner.prioritytodo.data.model.request.AddAccountRequest
 import com.huangliner.prioritytodo.data.model.request.LoginRequest
 import com.huangliner.prioritytodo.data.model.response.AddAccountResponse
 import com.huangliner.prioritytodo.data.model.response.LoginResponse
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface IRepositry {
@@ -25,5 +24,6 @@ interface IRepositry {
         todoItemList: List<TodoItem>
     )
 
-    fun getDueDateTodo(): Flow<List<TodoItem>>
+    suspend fun getDueDateTodo(): List<TodoItem>
+    suspend fun searchTodoItem(keyWord: String) : List<TodoItem>
 }
