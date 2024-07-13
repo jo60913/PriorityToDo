@@ -76,6 +76,7 @@
             android:layout_height="wrap_content"
             style="@style/ItemRowDueDateTimeTheme"
             android:layout_marginVertical="10dp"
+            app:remainTime="@{todoItem.dueDate}"
             app:layout_constraintEnd_toEndOf="@id/gl_due_date_item_row_end"
             app:layout_constraintTop_toBottomOf="@+id/cd_due_date_item_priority" />
 

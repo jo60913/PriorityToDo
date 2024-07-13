@@ -31,6 +31,8 @@
     <string name="add_task_subtask_input_hint">請輸入子標題</string>
     <string name="add_task_add_success">新增任務成功</string>
     <string name="home_24hour_due_date_todo_item">沒有24小時內到期的任務</string>
+    <string name="row_item_remain_time">剩餘時間</string>
+    <string name="remain_time_format">%s %02d:%02d</string>
     <string-array name="todo_item_priority">
         <item>高</item>
         <item>中</item>
