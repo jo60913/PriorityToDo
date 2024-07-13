@@ -50,6 +50,8 @@ class HomeFragment : Fragment() {
                     dueDateAdapter.submitList(it.data)
                     dueDateAdapter.setClickListener { dueDateItem ->
                         Timber.e("點下 ${dueDateItem.title}")
+                        val action = HomeFragmentDirections.actionHomeFragmentToUpdateFragment(dueDateItem.no)
+                        findNavController().navigate(action)
                     }
                 }
             }
@@ -73,6 +75,7 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+        homeViewModel.getDueDateTodo()
         setHasOptionsMenu(true)
         return binding.root
     }
