@@ -8,8 +8,8 @@ git clone https://github.com/jo60913/PriorityToDo.git
 
 ### 結構
 MVVM模式 + clean architecture
-把業務邏輯從ViewModel 與 Repository 中抽離出UseCase，方便重複使用且容易增加測試類做測試。
-串接後端專案 https://github.com/jo60913/Priority-Todo-api
+把業務邏輯從ViewModel 與 Repository 中抽離出UseCase，方便重複使用且容易增加測試類做測試，並使用依賴注入管理Data Source、Repository、Usecase方便未來更換Data Source而不做太多的改動。  
+串接後端專案 https://github.com/jo60913/Priority-Todo-api  
 
 ```
 .
